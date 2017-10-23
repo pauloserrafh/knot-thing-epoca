@@ -47,7 +47,14 @@ static int light_write(uint8_t *val)
 
 void setup()
 {
+    Serial.begin(9600);
 
+    pinMode(LIGHT_BULB_PIN, OUTPUT);
+    thing.init("KNoTThing");
+    thing.registerBoolData(LIGHT_BULB_NAME, LIGHT_BULB_ID, KNOT_TYPE_ID_SWITCH,
+        KNOT_UNIT_NOT_APPLICABLE, light_read, light_write);
+
+    Serial.println(F("Remote Light Bulb KNoT Demo"));
 }
 
 void loop()
