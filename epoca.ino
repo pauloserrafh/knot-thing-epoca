@@ -33,6 +33,18 @@ static int light_read(uint8_t *val)
     return 0;
 }
 
+
+static int light_write(uint8_t *val)
+{
+    digitalWrite(LIGHT_BULB_PIN, *val);
+    Serial.print(F("Light Status: "));
+    if (*val)
+      Serial.println(F("ON"));
+    else
+      Serial.println(F("OFF"));
+    return 0;
+}
+
 void setup()
 {
 
