@@ -22,6 +22,17 @@
 KNoTThing thing;
 
 
+static int light_read(uint8_t *val)
+{
+    *val = digitalRead(LIGHT_BULB_PIN);
+    Serial.print(F("Light Status: "));
+    if (*val)
+      Serial.println(F("ON"));
+    else
+      Serial.println(F("OFF"));
+    return 0;
+}
+
 void setup()
 {
 
